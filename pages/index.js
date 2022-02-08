@@ -1,17 +1,18 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 import { getParsedCookie, setParsedCookie } from '../util/cookies';
-import animalsDatabase from '../util/database';
+import productsDatabase from '../util/database';
 
 export default function Home(props) {
-  const [likedArray, setLikedArray] = useState(props.likedAnimals);
+  const [likedArray, setLikedArray] = useState(props.likedProducts);
 
-  function toggleAnimalLike(id) {
+  function toggleProductLike(id) {
     // 1. get the value of the cookie
-    const cookieValue = getParsedCookie('likedAnimals') || [];
+    const cookieValue = getParsedCookie('likedProducts') || [];
 
     // 2. update the cooke
     const existIdOnArray = cookieValue.some((cookieObject) => {
@@ -33,7 +34,7 @@ export default function Home(props) {
 
     // 3. set the new value of the cookie
     setLikedArray(newCookie);
-    setParsedCookie('likedAnimals', newCookie);
+    setParsedCookie('likedProducts', newCookie);
   }
 
   return (
@@ -46,10 +47,9 @@ export default function Home(props) {
         </Head>
         <h1 className={styles.title}>Welcome to E-Commerce</h1>
 
-        <p className={styles.description}>A short text about the products </p>
         <main className={styles.grid}>
-          {props.animals.map((animal) => {
-            // animal =  {
+          {props.products.map((product) => {
+            // product =  {
             //   id: '1',
             //   name: 'Tiny',
             //   age: 47,
@@ -57,23 +57,28 @@ export default function Home(props) {
             //   accessory: 'Monacle',
             // },
 
-            // likedAnimals = [{ id: "1" }, { id: "2" }];
+            // likedProducts = [{ id: "1" }, { id: "2" }];
 
-            const animalIsLiked = likedArray.some((likedObject) => {
-              return likedObject.id === animal.id;
+            const productIsLiked = likedArray.some((likedObject) => {
+              return likedObject.id === product.id;
             });
 
             return (
-              <div key={`animal-${animal.id}`} className={styles.grid}>
-                {/* Dynamic link, eg. /animals/1, /animals/2, etc */}
-                <Link href={`/animals/${animal.id}`}>
+              <div key={`product-${product.id}`} className={styles.grid}>
+                {/* Dynamic link, eg. /products/1, /products/2, etc */}
+                <Link href={`/products/${product.id}`}>
                   <a className={styles.card}>
-                    {animal.name} is a {animal.type} with a {animal.accessory}
+                    {product.name} is a {product.type} with a {product.price}
+                    <Image
+                      src={`/unfortunately-foxes/${product.id}.jpeg`}
+                      width="200"
+                      height="200"
+                    />
                   </a>
                 </Link>{' '}
-                <button onClick={() => toggleAnimalLike(animal.id)}>
-                  {animalIsLiked ? '🧡' : '🖤'}
-                </button>
+                {/* <button onClick={() => toggleProductLike(product.id)}>
+                  {productIsLiked ? '🧡' : '🖤'}
+                </button> */}
               </div>
             );
           })}
@@ -92,10 +97,10 @@ export default function Home(props) {
 // (ONLY FILES IN /pages) and gets imported
 // by Next.js
 export function getServerSideProps(context) {
-  const likedAnimalsOnCookies = context.req.cookies.likedAnimals || '[]';
+  const likedProductsOnCookies = context.req.cookies.likedProducts || '[]';
 
-  // if there is no likedAnimals cookie on the browser we store to an [] otherwise we get the cooke value and parse it
-  const likedAnimals = JSON.parse(likedAnimalsOnCookies);
+  // if there is no likedProducts cookie on the browser we store to an [] otherwise we get the cooke value and parse it
+  const likedProducts = JSON.parse(likedProductsOnCookies);
   // Important:
   // - Always return an object from getServerSideProps
   // - Always return a key in that object that is
@@ -107,8 +112,8 @@ export function getServerSideProps(context) {
     props: {
       // In the props object, you can pass back
       // whatever information you want
-      likedAnimals: likedAnimals,
-      animals: animalsDatabase,
+      likedProducts: likedProducts,
+      products: productsDatabase,
     },
   };
 }

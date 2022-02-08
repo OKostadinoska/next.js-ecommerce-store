@@ -9,9 +9,10 @@ export default function shoppingCart() {
         <title>About</title>
         <meta name="description" content="About the team" />
       </Head>
-
-      <h1>Shopping Cart</h1>
-      <p>This is the shopping cart page</p>
+      <div>
+        <h1>Shopping Cart</h1>
+        <p>This is the shopping cart page</p>
+      </div>
     </Layout>
   );
 }

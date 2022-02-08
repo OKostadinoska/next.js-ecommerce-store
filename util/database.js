@@ -2,35 +2,31 @@
 // eslint-disable-next-line unicorn/prefer-node-protocol
 // import { readFileSync } from 'fs';
 
-const animalsDatabase = [
+const productsDatabase = [
   {
     id: '1',
     name: 'Tiny',
-    age: 47,
+    price: 47,
     type: 'Dragon',
-    accessory: 'Monacle',
   },
   {
     id: '2',
     name: 'Pete',
-    age: 4,
+    price: 4,
     type: 'Iguana',
-    accessory: 'Top Hat',
   },
   {
     id: '3',
     name: 'Randolph',
-    age: 9,
+    price: 9,
     type: 'Parakeet',
-    accessory: 'Ring',
   },
   {
     id: '4',
     name: 'George',
-    age: 2,
+    price: 2,
     type: 'Tiger',
-    accessory: 'Gold Chain',
   },
 ];
 
-export default animalsDatabase;
+export default productsDatabase;

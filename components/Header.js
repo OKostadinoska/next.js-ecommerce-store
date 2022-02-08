@@ -11,7 +11,7 @@ export default function Header() {
         <a>About</a>
       </Link>
       <Link href="/shoppingCart">
-        <a>Shopping Cart</a>
+        <a>Shopping Cart 🛒</a>
       </Link>
     </header>
   );
