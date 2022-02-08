@@ -3,16 +3,24 @@ import styles from '../styles/Home.module.css';
 
 export default function Header() {
   return (
-    <header className={styles.header}>
-      <Link href="/">
-        <a>Home</a>
-      </Link>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-      <Link href="/shoppingCart">
-        <a>Shopping Cart 🛒</a>
-      </Link>
-    </header>
+    <nav className={styles.navigation}>
+      <div id={styles.menuToggle}>
+        <input type="checkbox" />
+        <span />
+        <span />
+        <span />
+        <ul id={styles.menu}>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+          <Link href="/shoppingCart">
+            <a>Shopping Cart 🛒</a>
+          </Link>
+        </ul>
+      </div>
+    </nav>
   );
 }
