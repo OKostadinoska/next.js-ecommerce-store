@@ -8,11 +8,13 @@ import { getParsedCookie, setParsedCookie } from '../util/cookies';
 import productsDatabase from '../util/database';
 
 export default function Home(props) {
-  const [likedArray, setLikedArray] = useState(props.likedProducts);
+  const [addedProductsArray, setAddedProductsArray] = useState(
+    props.addedProducts,
+  );
 
   function toggleProductLike(id) {
     // 1. get the value of the cookie
-    const cookieValue = getParsedCookie('likedProducts') || [];
+    const cookieValue = getParsedCookie('addedProducts') || [];
 
     // 2. update the cooke
     const existIdOnArray = cookieValue.some((cookieObject) => {
@@ -24,17 +26,24 @@ export default function Home(props) {
       //  CASE = when the id is in the array => delete item
       //  cookieValue  [{id:3},{id:5} ]
       newCookie = cookieValue.filter((cookieObject) => {
-        return cookieObject.id !== id;
+        if (cookieObject.id === id) {
+          cookieObject.quantity += 1;
+          console.log(cookieObject);
+        }
+        // return cookieObject.id !== id;
+        return cookieObject;
       });
     } else {
       //  CASE = when the id is not in the array => add item
+      cookieValue.push(id);
       //  cookieValue  [{id:3, stars: 5 },{id:5, stars: 12 }]
       newCookie = [...cookieValue, { id: id, stars: 0 }];
+      // here i need push function for the add to card button
     }
 
     // 3. set the new value of the cookie
-    setLikedArray(newCookie);
-    setParsedCookie('likedProducts', newCookie);
+    setAddedProductsArray(newCookie);
+    setParsedCookie('addedProducts', newCookie);
   }
 
   return (
@@ -57,9 +66,9 @@ export default function Home(props) {
             //   accessory: 'Monacle',
             // },
 
-            // likedProducts = [{ id: "1" }, { id: "2" }];
+            // addedProducts = [{ id: "1" }, { id: "2" }];
 
-            const productIsLiked = likedArray.some((likedObject) => {
+            const productIsLiked = addedProductsArray.some((likedObject) => {
               return likedObject.id === product.id;
             });
 
@@ -79,6 +88,9 @@ export default function Home(props) {
                 {/* <button onClick={() => toggleProductLike(product.id)}>
                   {productIsLiked ? '🧡' : '🖤'}
                 </button> */}
+                <button onClick={() => toggleProductLike(product.id)}>
+                  Add to card
+                </button>
               </div>
             );
           })}
@@ -97,10 +109,10 @@ export default function Home(props) {
 // (ONLY FILES IN /pages) and gets imported
 // by Next.js
 export function getServerSideProps(context) {
-  const likedProductsOnCookies = context.req.cookies.likedProducts || '[]';
+  const addedProductsOnCookies = context.req.cookies.addedProducts || '[   ]';
 
-  // if there is no likedProducts cookie on the browser we store to an [] otherwise we get the cooke value and parse it
-  const likedProducts = JSON.parse(likedProductsOnCookies);
+  // if there is no addedProducts cookie on the browser we store to an [] otherwise we get the cooke value and parse it
+  const addedProducts = JSON.parse(addedProductsOnCookies);
   // Important:
   // - Always return an object from getServerSideProps
   // - Always return a key in that object that is
@@ -112,7 +124,7 @@ export function getServerSideProps(context) {
     props: {
       // In the props object, you can pass back
       // whatever information you want
-      likedProducts: likedProducts,
+      addedProducts: addedProducts,
       products: productsDatabase,
     },
   };
