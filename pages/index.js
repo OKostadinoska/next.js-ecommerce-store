@@ -12,7 +12,7 @@ export default function Home(props) {
     props.addedProducts,
   );
 
-  function toggleProductLike(id) {
+  function addProductToCart(id) {
     // 1. get the value of the cookie
     const cookieValue = getParsedCookie('addedProducts') || [];
 
@@ -88,7 +88,7 @@ export default function Home(props) {
                 {/* <button onClick={() => toggleProductLike(product.id)}>
                   {productIsLiked ? '🧡' : '🖤'}
                 </button> */}
-                <button onClick={() => toggleProductLike(product.id)}>
+                <button onClick={() => addProductToCart(product.id)}>
                   Add to card
                 </button>
               </div>
