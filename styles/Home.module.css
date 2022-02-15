@@ -138,10 +138,10 @@
 #menuToggle input {
   display: block;
   width: 40px;
-  height: 32px;
+  height: 40px;
   position: absolute;
   top: -7px;
-  left: -5px;
+  left: -10px;
 
   cursor: pointer;
 
@@ -211,8 +211,8 @@
  */
 #menu {
   position: absolute;
-  width: 400px;
-  height: 350px;
+  width: 450px;
+  height: 400px;
   margin: -100px 0 0 -135px;
   padding: 50px;
   padding-top: 120px;
@@ -233,7 +233,7 @@
   display: flex;
   padding: 10px 0;
   font-size: 22px;
-  padding-left: 6rem;
+  padding-left: 8rem;
 }
 
 /*
