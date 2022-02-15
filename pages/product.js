@@ -89,6 +89,7 @@ export default function Product(props) {
                 </Link>{' '}
                 <button onClick={() => addProductToCart(product.id)}>
                   {productIsAdded ? '🧡' : '🖤'}
+                  Add to Cart
                 </button>
                 {/* <button onClick={() => addProductToCart(product.id)}>
                   Add to card
