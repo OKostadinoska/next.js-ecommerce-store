@@ -50,32 +50,3 @@ export async function getProductById(id: number) {
   `;
   return product && camelcaseKeys(product);
 }
-
-// const productsDatabase = [
-//   {
-//     id: '1',
-//     name: 'Tiny',
-//     price: 47,
-//     type: 'Dragon',
-//   },
-//   {
-//     id: '2',
-//     name: 'Pete',
-//     price: 4,
-//     type: 'Iguana',
-//   },
-//   {
-//     id: '3',
-//     name: 'Randolph',
-//     price: 9,
-//     type: 'Parakeet',
-//   },
-//   {
-//     id: '4',
-//     name: 'George',
-//     price: 2,
-//     type: 'Tiger',
-//   },
-// ];
-
-// export default productsDatabase;
