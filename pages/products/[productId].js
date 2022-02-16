@@ -2,9 +2,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
 import Layout from '../../components/Layout';
+import productsDatabase from '../../migrations/1645015633-insertIntoProducts';
 import styles from '../../styles/Home.module.css';
 import { getParsedCookie, setParsedCookie } from '../../util/cookies';
-import productsDatabase from '../../util/database';
 
 export default function SingleProduct(props) {
   const [addedProductsArray, setAddedProductsArray] = useState(
