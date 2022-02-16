@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 import { getParsedCookie, setParsedCookie } from '../util/cookies';
-import productsDatabase from '../util/database';
+import { getProducts } from '../util/database';
 
 export default function Product(props) {
   const [addedProductsArray, setAddedProductsArray] = useState(
@@ -111,9 +111,10 @@ export default function Product(props) {
 // getServerSideProps is exported from your files
 // (ONLY FILES IN /pages) and gets imported
 // by Next.js
-export function getServerSideProps(context) {
+export async function getServerSideProps(context) {
   const addedProductsOnCookies = context.req.cookies.addedProducts || '[   ]';
 
+  const products = await getProducts();
   // if there is no addedProducts cookie on the browser we store to an [] otherwise we get the cooke value and parse it
   const addedProducts = JSON.parse(addedProductsOnCookies);
   // Important:
@@ -128,7 +129,7 @@ export function getServerSideProps(context) {
       // In the props object, you can pass back
       // whatever information you want
       addedProducts: addedProducts,
-      products: productsDatabase,
+      products: products,
     },
   };
 }
