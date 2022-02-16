@@ -27,19 +27,24 @@ export default function Product(props) {
     if (existIdOnArray) {
       //  CASE = when the id is in the array => delete item
       //  cookieValue  [{id:3},{id:5} ]
-      newCookie = cookieValue.filter((cookieObject) => {
-        if (cookieObject.id === id) {
-          cookieObject.quantity += 1;
-          console.log(cookieObject);
-        }
-        // return cookieObject.id !== id;
-        return cookieObject;
-      });
+      newCookie = cookieValue.filter(
+        (cookieObject) =>
+          // if (cookieObject.id === id) {
+          cookieObject.quantity + 1,
+      );
+      console.log(newCookie); //
+      // }
+      // return cookieObject.id !== id;
+      // return cookieObject;
+      // );
     } else {
       //  CASE = when the id is not in the array => add item
-      cookieValue.push(id);
+      // cookieValue.push({
+      //   id: id,
+      //   quantity: 1,
+      // });
       //  cookieValue  [{id:3, stars: 5 },{id:5, stars: 12 }]
-      newCookie = [...cookieValue, { id: id, stars: 1 }];
+      newCookie = [...cookieValue, { id: id, quantity: 1 }];
       // here i need push function for the add to card button
     }
 
@@ -88,7 +93,7 @@ export default function Product(props) {
                   </a>
                 </Link>{' '}
                 <button onClick={() => addProductToCart(product.id)}>
-                  {productIsAdded ? '🧡' : '🖤'}
+                  {/* {productIsAdded ? '🧡' : '🖤'} */}
                   Add to Cart
                 </button>
                 {/* <button onClick={() => addProductToCart(product.id)}>
