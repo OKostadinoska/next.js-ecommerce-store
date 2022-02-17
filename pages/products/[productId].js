@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Layout from '../../components/Layout';
 import styles from '../../styles/Home.module.css';
 import { getParsedCookie, setParsedCookie } from '../../util/cookies';
-import productsDatabase from '../../util/database';
+import { getProducts } from '../../util/database';
 
 export default function SingleProduct(props) {
   const [addedProductsArray, setAddedProductsArray] = useState(
@@ -13,7 +13,7 @@ export default function SingleProduct(props) {
 
   // [{"id":"1","stars":0},{"id":"2","stars":0}]
   const currentProductObject = addedProductsArray.find(
-    (cookieObject) => cookieObject.id === props.product.id,
+    (cookieObject) => cookieObject.id === props.instruments.id,
   );
 
   console.log(currentProductObject);
@@ -26,7 +26,7 @@ export default function SingleProduct(props) {
     // 2. update the stars count to +1
     const newCookie = cookieValue.map((cookieObject) => {
       // if is the object of the animal on this page update stars
-      if (cookieObject.id === props.product.id) {
+      if (cookieObject.id === props.instruments.id) {
         return { ...cookieObject, stars: cookieObject.stars + 1 };
       } else {
         // if is not the object of the animal on this page don't do anything
@@ -44,18 +44,15 @@ export default function SingleProduct(props) {
       <div className={styles.singleProduct}>
         <div>
           <Head>
-            <title>{props.product.name}</title>
-            <meta description={`${props.product.name}`} />
+            <title>{props.instruments.name}</title>
+            <meta description={`${props.instruments.name}`} />
           </Head>
-          <div>
-            <h1>
-              {props.product.name} ({props.product.type})
-            </h1>
-          </div>
+          <h1 className={styles.singleProductTitle}>Mockingbird</h1>
+
           <div className={styles.singleProduct}>
             <div className={styles.singleImage}>
               <Image
-                src={`/unfortunately-foxes/${props.product.id}.jpeg`}
+                src={`/unfortunately-foxes/${props.instruments.id}.png`}
                 width="300"
                 height="300"
               />
@@ -63,8 +60,8 @@ export default function SingleProduct(props) {
             <div className={styles.singleProduct}>
               <div className={styles.singleImage}>
                 {/* <div>id: {props.product.id}</div> */}
-                <div>name: {props.product.name}</div>
-                <div>price: {props.product.price}</div>
+                <div>name: {props.instruments.name}</div>
+                <div>price: {props.instruments.price}</div>
                 {/* <div>type: {props.product.type}</div> */}
               </div>
               <div>
@@ -87,25 +84,27 @@ export default function SingleProduct(props) {
 // The parameter `context` gets passed from Next.js
 // and includes a bunch of information about the
 // request
-export function getServerSideProps(context) {
+export async function getServerSideProps(context) {
   const addedProductsOnCookies = context.req.cookies.addedProducts || '[]';
 
+  const instruments = await getProducts();
   // if there is no likedAnimals cookie on the browser we store to an [] otherwise we get the cooke value and parse it
   const addedProducts = JSON.parse(addedProductsOnCookies);
 
   // This is the variable that we get from the URL
   // (anything after the slash)
-  const productId = context.query.productId;
-  console.log('db', productsDatabase);
+  // const productId = context.query.productId;
+  console.log('db', instruments);
 
-  const matchingProduct = productsDatabase.find((product) => {
-    return product.id === productId;
-  });
+  // const matchingProduct = getProducts.find((product) => {
+  //   return product.id === productId;
+  // });
 
   return {
     props: {
-      addedProducts: addedProducts,
-      product: matchingProduct,
+      addedProducts: addedProducts || null,
+      // product: matchingProduct,
+      instruments,
       // animalId: animalId,
     },
   };

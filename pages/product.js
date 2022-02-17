@@ -124,6 +124,8 @@ export async function getServerSideProps(context) {
   const addedProductsOnCookies = context.req.cookies.addedProducts || '[   ]';
 
   const products = await getProducts();
+
+  console.log('db', products);
   // if there is no addedProducts cookie on the browser we store to an [] otherwise we get the cooke value and parse it
   const addedProducts = JSON.parse(addedProductsOnCookies);
   // Important:
