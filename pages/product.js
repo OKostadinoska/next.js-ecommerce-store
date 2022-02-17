@@ -93,12 +93,9 @@ export default function Product(props) {
                   </a>
                 </Link>{' '}
                 <button onClick={() => addProductToCart(product.id)}>
-                  {/* {productIsAdded ? '🧡' : '🖤'} */}
+                  {productIsAdded ? '🧡' : '🖤'}
                   Add to Cart
                 </button>
-                {/* <button onClick={() => addProductToCart(product.id)}>
-                  Add to card
-                </button> */}
               </div>
             );
           })}
