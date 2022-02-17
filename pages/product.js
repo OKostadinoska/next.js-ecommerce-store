@@ -80,22 +80,29 @@ export default function Product(props) {
             });
 
             return (
-              <div key={`product-${product.id}`} className={styles.grid}>
-                {/* Dynamic link, eg. /products/1, /products/2, etc */}
-                <Link href={`/products/${product.id}`}>
-                  <a className={styles.card}>
-                    {product.name} is a {product.type} with a {product.price}
-                    <Image
-                      src={`/unfortunately-foxes/${product.id}.jpeg`}
-                      width="200"
-                      height="200"
-                    />
-                  </a>
-                </Link>{' '}
-                <button onClick={() => addProductToCart(product.id)}>
-                  {productIsAdded ? '🧡' : '🖤'}
-                  Add to Cart
-                </button>
+              <div>
+                <div key={`product-${product.id}`} className={styles.grid}>
+                  {/* Dynamic link, eg. /products/1, /products/2, etc */}
+                  <Link href={`/products/${product.id}`}>
+                    <a className={styles.card}>
+                      {/* {product.name} */}
+                      <Image
+                        src={`/unfortunately-foxes/${product.id}.png`}
+                        width="200"
+                        height="200"
+                      />
+                    </a>
+                  </Link>{' '}
+                </div>
+                <div className={styles.addToCartButtonContainer}>
+                  <button
+                    className={styles.addToCartButton}
+                    onClick={() => addProductToCart(product.id)}
+                  >
+                    {productIsAdded ? '🧡' : '🖤'}
+                    Add to Cart
+                  </button>
+                </div>
               </div>
             );
           })}

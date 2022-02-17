@@ -19,11 +19,11 @@ export default function Header() {
           <Link href="/about">
             <a>About</a>
           </Link>
-          <Link href="/shoppingCart">
-            <a>Shopping Cart 🛒</a>
-          </Link>
         </ul>
       </div>
+      {/* <Link href="/shoppingCart">
+        <a>Shopping Cart 🛒</a>
+      </Link> */}
     </nav>
   );
 }

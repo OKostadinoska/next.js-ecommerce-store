@@ -1,27 +1,27 @@
 const products = [
   {
     // id: '1',
-    name: 'Tiny',
+    name: 'Vinyl Player',
     price: 47,
-    type: 'Dragon',
+    type: 'music tool',
   },
   {
     // id: '2',
-    name: 'Pete',
+    name: 'Guitar',
     price: 4,
-    type: 'Iguana',
+    type: 'music instrument',
   },
   {
     // id: '3',
-    name: 'Randolph',
+    name: 'Saxophone',
     price: 9,
-    type: 'Parakeet',
+    type: 'music instrument',
   },
   {
     // id: '4',
-    name: 'George',
+    name: 'Microfon',
     price: 2,
-    type: 'Tiger',
+    type: 'music tool',
   },
 ];
 

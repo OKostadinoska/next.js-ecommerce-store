@@ -44,12 +44,8 @@ export default function SingleProduct(props) {
       <div className={styles.singleProduct}>
         <div>
           <Head>
-            <title>
-              {props.product.name} ({props.product.type})
-            </title>
-            <meta
-              description={`${props.product.name} is a ${props.product.type} with a ${props.product.price}`}
-            />
+            <title>{props.product.name}</title>
+            <meta description={`${props.product.name}`} />
           </Head>
           <div>
             <h1>
