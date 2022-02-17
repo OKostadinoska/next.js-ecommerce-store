@@ -8,8 +8,9 @@ export default function Footer() {
         <div className={styles.footerClaim}>
           <h4 className={styles.h4}>About</h4>
           <p>
-            A collaborative branding and design studio, partnering with
-            companies doing great things.
+            Would like to learn how to play a new instrument, maybe would like
+            to buy one for a gift or have one more in your collection?
+            Mockingbird is the right place to be.
           </p>
         </div>
         <div className={styles.footerMenu}>
