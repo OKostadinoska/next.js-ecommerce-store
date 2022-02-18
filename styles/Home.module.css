@@ -74,6 +74,7 @@
 }
 
 .addToCartButton {
+  width: 7rem;
   height: 2rem;
   background-color: #d18cb3;
   border-radius: 0.3rem;
@@ -243,7 +244,7 @@
 #menu {
   position: absolute;
   width: 1630px;
-  height: 750px;
+  height: 1000px;
   margin: -100px 0 0 -135px;
   padding: 50px;
   padding-top: 120px;

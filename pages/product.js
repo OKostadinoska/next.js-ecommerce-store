@@ -99,7 +99,7 @@ export default function Product(props) {
                     className={styles.addToCartButton}
                     onClick={() => addProductToCart(product.id)}
                   >
-                    {productIsAdded ? '🧡' : '🖤'}
+                    {/* {productIsAdded ? '🧡' : '🖤'} */}
                     Add to Cart
                   </button>
                 </div>
