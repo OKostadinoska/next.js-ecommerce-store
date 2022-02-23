@@ -47,7 +47,10 @@ export default function ShoppingCart() {
                 </Link>{' '}
               </div>
               <div className={styles.deleteButton}>
-                <button onClick={() => deleteFromCart(product.id)}>
+                <button
+                  onClick={() => deleteFromCart(product.id)}
+                  className={styles.addToCartButton}
+                >
                   Delete
                 </button>
               </div>

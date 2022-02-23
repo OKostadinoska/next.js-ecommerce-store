@@ -70,6 +70,7 @@ export default function SingleProduct(props) {
               <button
                 data-test-id="product-add-to-cart"
                 onClick={() => addProductToCart(props.products.id)}
+                className={styles.addToCartButton}
               >
                 Add to Cart
               </button>
