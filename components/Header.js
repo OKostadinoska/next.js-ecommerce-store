@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 
 export default function Header() {
   return (
-    <nav className={styles.navigation}>
+    <nav>
       <div id={styles.menuToggle}>
         <input type="checkbox" />
         <span />
@@ -19,10 +19,12 @@ export default function Header() {
           <Link href="/about">
             <a>About</a>
           </Link>
-          <Link href="/shoppingCart">
-            <a>Shopping Cart 🛒</a>
-          </Link>
         </ul>
+      </div>
+      <div className={styles.shoppingCart}>
+        <Link href="/shoppingCart">
+          <a>Shopping Cart 🛒</a>
+        </Link>
       </div>
     </nav>
   );

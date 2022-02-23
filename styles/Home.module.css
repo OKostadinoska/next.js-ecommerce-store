@@ -55,10 +55,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 3rem;
-  padding-bottom: 3rem;
-  /* flex-wrap: wrap; */
-  /* max-width: 700px;
-  padding-left: 15rem; */
+  padding-bottom: 6.5rem;
 }
 
 .card {
@@ -115,12 +112,17 @@
   }
 }
 
+.shoppingCart {
+  text-align: right;
+  padding-right: 5rem;
+}
+
 .singleProduct {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 3rem;
-  padding-bottom: 3.9rem;
+  padding-bottom: 6rem;
 }
 
 .singleImage {
@@ -143,6 +145,10 @@
   width: 6rem;
   background-color: #d18cb3;
   border-radius: 0.3rem;
+}
+
+.deleteButton {
+  text-align: center;
 }
 
 #menuToggle {
@@ -278,36 +284,5 @@
 
 .footer {
   border-top: 1px solid #e3d6e6;
-}
-
-/* .footerContentWrapper {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.footerClaim {
-  padding-left: 5rem;
-  width: 40%;
-}
-
-.footerMenu {
-  padding-left: 28rem;
-} */
-
-.footerSecondary {
   text-align: center;
 }
-
-/* .footerLink {
-  display: block;
-  font-size: 1.15em;
-  line-height: 1.6;
-
-} */
-
-/* .h4 {
-  font-family: Recoleta, sans-serif;
-  font-size: 1.5rem;
-
-  font-weight: 400;
-} */

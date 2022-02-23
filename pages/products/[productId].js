@@ -52,7 +52,6 @@ export default function SingleProduct(props) {
             <title>{props.products.name}</title>
             <meta name="description" content={props.products.name} />
           </Head>
-          <h1 className={styles.singleProductTitle}>Mockingbird</h1>
 
           <div className={styles.singleProduct}>
             <div className={styles.singleImage}>
@@ -65,9 +64,8 @@ export default function SingleProduct(props) {
             <div className={styles.singleProduct}>
               <div className={styles.singleImage}>
                 {/* <div>id: {props.product.id}</div> */}
-                <div>name: {props.products.name}</div>
-                <div>price: {props.products.price}</div>
-                {/* <div>type: {props.product.type}</div> */}
+                <div> {props.products.name}</div>
+                <div> {props.products.price} € </div>
               </div>
               <button
                 data-test-id="product-add-to-cart"
@@ -89,7 +87,7 @@ export default function SingleProduct(props) {
 export async function getServerSideProps(context) {
   const addedProductsOnCookies = context.req.cookies.addedProducts || '[]';
 
-  // if there is no likedAnimals cookie on the browser we store to an [] otherwise we get the cooke value and parse it
+  // if there is no addedProduct cookie on the browser we store to an [] otherwise we get the cooke value and parse it
   const addedProducts = JSON.parse(addedProductsOnCookies);
 
   // This is the variable that we get from the URL
@@ -101,9 +99,8 @@ export async function getServerSideProps(context) {
   return {
     props: {
       addedProducts: addedProducts || null,
-      // product: matchingProduct,
+
       products,
-      // animalId: animalId,
     },
   };
 }
