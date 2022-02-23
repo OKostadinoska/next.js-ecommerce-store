@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css';
 export default function Footer() {
   return (
     <div className={styles.footer}>
-      <div className={styles.footerContentWrapper}>
+      {/* <div className={styles.footerContentWrapper}>
         <div className={styles.footerClaim}>
           <h4 className={styles.h4}>About</h4>
           <p>
@@ -28,7 +28,7 @@ export default function Footer() {
             <a className={styles.footerLink}>Shopping Cart 🛒</a>
           </Link>
         </div>
-      </div>
+      </div> */}
       <div className={styles.footerSecondary}>
         <p>© 2022 Created by Olivera Kostadinoska</p>
       </div>

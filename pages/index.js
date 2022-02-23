@@ -20,11 +20,11 @@ export default function About() {
             to buy one for a gift or have one more in your collection?
             Mockingbird is the right place to be.{' '}
           </p>
-          <Link href="/product" passHref>
+          <Link href="/productList" passHref>
             <button className={styles.shopButton}>Discover 🎵</button>
           </Link>
         </div>
-        <Image src="/musical_key.png" width="600" height="600" />
+        <Image src="/musical_key.png" width="600" height="615" />
       </div>
     </Layout>
   );

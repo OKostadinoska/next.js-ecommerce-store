@@ -13,17 +13,17 @@ export default function Header() {
           <Link href="/">
             <a>Home</a>
           </Link>
-          <Link href="/product">
+          <Link href="/productList">
             <a>Products</a>
           </Link>
           <Link href="/about">
             <a>About</a>
           </Link>
+          <Link href="/shoppingCart">
+            <a>Shopping Cart 🛒</a>
+          </Link>
         </ul>
       </div>
-      {/* <Link href="/shoppingCart">
-        <a>Shopping Cart 🛒</a>
-      </Link> */}
     </nav>
   );
 }

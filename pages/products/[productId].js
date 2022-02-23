@@ -7,36 +7,41 @@ import { getParsedCookie, setParsedCookie } from '../../util/cookies';
 import { getProductById } from '../../util/database';
 
 export default function SingleProduct(props) {
-  const [addedProductsArray, setAddedProductsArray] = useState(
-    props.addedProducts,
-  );
+  // 1. get the value of the cookie
+  const cookieValue = getParsedCookie('addedProducts') || [];
+  const [cart, setCart] = useState(cookieValue);
 
-  // [{"id":"1","stars":0},{"id":"2","stars":0}]
-  const currentProductObject = addedProductsArray.find(
-    (cookieObject) => cookieObject.id === props.products.id,
-  );
+  function addProductToCart(id) {
+    // is id in array => return true or false
+    const existIdOnArray = cart.some((cookieObject) => cookieObject.id === id);
 
-  console.log(currentProductObject);
+    // find in array => return single object with same id
+    const productWithSameId = cart.find(
+      (cookieObject) => cookieObject.id === id,
+    );
+    // filter array => return an array without product with same id
+    const productWithDifferentId = cart.filter(
+      (cookieObject) => cookieObject.id !== id,
+    );
 
-  function starsCountUp() {
-    // because we render the button only when is liked then we can be sure the object is always on the cooke
-    console.log('stars up');
-    // 1. get the current cookie value
-    const cookieValue = getParsedCookie('addedProducts') || [];
-    // 2. update the stars count to +1
-    const newCookie = cookieValue.map((cookieObject) => {
-      // if is the object of the animal on this page update stars
-      if (cookieObject.id === props.products.id) {
-        return { ...cookieObject, stars: cookieObject.stars + 1 };
-      } else {
-        // if is not the object of the animal on this page don't do anything
-        return cookieObject;
-      }
-    });
+    let newCookie;
+    // if cookie id exists, update amount
+    if (existIdOnArray) {
+      newCookie = [
+        ...productWithDifferentId,
+        {
+          id: productWithSameId.id,
+        },
+      ];
+      // add new cookie
+    } else {
+      newCookie = [...cookieValue, { id: id }];
+    }
 
-    // 3. update cookie and state
-    setAddedProductsArray(newCookie);
+    // 3. set the new value of the cookie
+
     setParsedCookie('addedProducts', newCookie);
+    setCart(newCookie);
   }
 
   return (
@@ -45,7 +50,7 @@ export default function SingleProduct(props) {
         <div>
           <Head>
             <title>{props.products.name}</title>
-            <meta description={`${props.products.name}`} />
+            <meta name="description" content={props.products.name} />
           </Head>
           <h1 className={styles.singleProductTitle}>Mockingbird</h1>
 
@@ -64,15 +69,12 @@ export default function SingleProduct(props) {
                 <div>price: {props.products.price}</div>
                 {/* <div>type: {props.product.type}</div> */}
               </div>
-              <div>
-                {currentProductObject ? (
-                  <button onClick={() => starsCountUp()}>
-                    stars: {currentProductObject.stars}{' '}
-                  </button>
-                ) : (
-                  'not followed'
-                )}
-              </div>
+              <button
+                data-test-id="product-add-to-cart"
+                onClick={() => addProductToCart(props.products.id)}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>
@@ -95,9 +97,6 @@ export async function getServerSideProps(context) {
   const productId = context.query.productId;
   console.log('db', productId);
   const products = await getProductById(productId);
-  // const matchingProduct = getProducts.find((product) => {
-  //   return product.id === productId;
-  // });
 
   return {
     props: {

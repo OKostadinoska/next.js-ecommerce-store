@@ -38,17 +38,17 @@ export type Product = {
 };
 
 export async function getProducts() {
-  const products = await sql<Product[]>`
+  const products = await sql`
     SELECT * FROM products;
   `;
   return products.map((product) => camelcaseKeys(product));
 }
 
 export async function getProductById(id: number) {
-  const [product] = await sql<[Product | undefined]>`
+  const [product] = await sql`
     SELECT * FROM products WHERE id = ${id};
   `;
-  return product && camelcaseKeys(product);
+  return camelcaseKeys(product);
 }
 
 // const productsDatabase = [
