@@ -11,7 +11,7 @@ export default function About() {
         <title>Home page</title>
         <meta name="description" content="Home page" />
       </Head>
-      <div className={styles.aboutPage}>
+      <div className={styles.aboutHomePage}>
         <div className={styles.aboutTextContainer}>
           <h1>Welcome</h1>
           <h2>to Mockingbird</h2>

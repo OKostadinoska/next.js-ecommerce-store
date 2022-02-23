@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 3rem;
-  padding-bottom: 6.5rem;
+  padding-bottom: 6.3rem;
 }
 
 .card {
@@ -129,10 +129,21 @@
   padding-right: 5rem;
 }
 
-.aboutPage {
+.aboutHomePage {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.aboutPage h1 {
+  padding-top: 8rem;
+  width: 70rem;
+  padding-left: 42rem;
+}
+
+.aboutPage p {
+  width: 70rem;
+  padding-left: 30rem;
 }
 
 .aboutTextContainer {
@@ -272,7 +283,8 @@
   display: flex;
   padding: 25px 0;
   font-size: 72px;
-  padding-left: 42rem;
+  padding-left: 40rem;
+  font-weight: 900;
 }
 
 /*
@@ -285,4 +297,7 @@
 .footer {
   border-top: 1px solid #e3d6e6;
   text-align: center;
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
 }

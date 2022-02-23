@@ -17,7 +17,7 @@ export default function Header() {
             <a>Products</a>
           </Link>
           <Link href="/about">
-            <a>About</a>
+            <a>Our Story</a>
           </Link>
         </ul>
       </div>

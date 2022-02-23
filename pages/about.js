@@ -11,11 +11,21 @@ export default function About() {
       </Head>
       <div className={styles.aboutPage}>
         <div>
-          <h1>About</h1>
+          <h1>Our Story</h1>
           <p>
-            Would like to learn how to play a new instrument, maybe would like
-            to buy one for a gift or have one more in your collection?
-            Mockingbird is the right place to be.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec massa
+            nulla, convallis eget pharetra eu, mattis et nunc. Fusce vel
+            vulputate lorem. Pellentesque habitant morbi tristique senectus et
+            netus et malesuada fames ac turpis egestas. Fusce odio nibh,
+            sollicitudin et turpis vel, consectetur vehicula massa. Nam
+            venenatis ultrices elit, eget consequat tellus finibus in. Proin
+            ultricies, est eget volutpat blandit, arcu nisi lacinia nibh, ac
+            suscipit massa felis non neque. Nam sodales nunc nunc, eu dictum
+            ligula ullamcorper ut. Nulla nisl ligula, rhoncus maximus porttitor
+            ut, condimentum non tellus. Cras non dolor in risus gravida
+            pulvinar. Nam tortor lorem, vehicula et nisl quis, condimentum
+            feugiat nibh. Curabitur vitae porttitor lacus, eget pretium ipsum.
+            Integer posuere arcu magna.
           </p>
         </div>
       </div>
