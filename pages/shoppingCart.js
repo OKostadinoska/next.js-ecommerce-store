@@ -11,15 +11,15 @@ export default function ShoppingCart(props) {
   const cookieValue = getParsedCookie('addedProducts') || [];
   const [cart, setCart] = useState(cookieValue);
 
-  // // delete item from cart
-  // const deleteFromCart = (id) => {
-  //   const newCookie = cart.filter((cookieObject) => {
-  //     return cookieObject.id !== id;
-  //   });
+  // delete item from cart
+  const deleteFromCart = (id) => {
+    const newCookie = cart.filter((cookieObject) => {
+      return cookieObject.id !== id;
+    });
 
-  //   setCart(newCookie);
-  //   setParsedCookie('addedProducts', newCookie);
-  // };
+    setCart(newCookie);
+    setParsedCookie('addedProducts', newCookie);
+  };
 
   return (
     <Layout>
@@ -48,11 +48,11 @@ export default function ShoppingCart(props) {
                   </a>
                 </Link>{' '}
               </div>
-              {/* <div className={styles.addToCartButtonContainer}>
+              <div className={styles.addToCartButtonContainer}>
                 <button onClick={() => deleteFromCart(product.id)}>
                   Delete
                 </button>
-              </div> */}
+              </div>
             </div>
           ))}
         </main>
