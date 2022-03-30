@@ -38,7 +38,7 @@ export default function ShoppingCart() {
                   <a className={styles.card}>
                     {/* {product.name} */}
                     <Image
-                      src={`/unfortunately-foxes/${product.id}.png`}
+                      src={`/images/${product.id}.png`}
                       alt={product.name}
                       width="200"
                       height="200"

@@ -56,7 +56,7 @@ export default function SingleProduct(props) {
           <div className={styles.singleProduct}>
             <div className={styles.singleImage}>
               <Image
-                src={`/unfortunately-foxes/${props.products.id}.png`}
+                src={`/images/${props.products.id}.png`}
                 width="300"
                 height="300"
               />

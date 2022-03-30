@@ -24,7 +24,7 @@ export default function ProductList(props) {
                     <a className={styles.card}>
                       {/* {product.name} */}
                       <Image
-                        src={`/unfortunately-foxes/${product.id}.png`}
+                        src={`/images/${product.id}.png`}
                         width="200"
                         height="200"
                       />
