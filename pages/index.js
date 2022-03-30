@@ -24,7 +24,7 @@ export default function About() {
             <button className={styles.shopButton}>Discover 🎵</button>
           </Link>
         </div>
-        <Image src="/musical_key.png" width="600" height="615" />
+        <Image src="/musical_key.png" width="550" height="615" />
       </div>
     </Layout>
   );
