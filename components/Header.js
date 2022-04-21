@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button, Divider, Icon } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 import styles from '../styles/Home.module.css';
 
 export default function Header() {
