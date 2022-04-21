@@ -206,7 +206,7 @@
 #menuToggle span {
   display: block;
   width: 33px;
-  height: 2px;
+  height: 1px;
   margin-bottom: 5px;
   position: relative;
 
@@ -263,8 +263,8 @@
   width: 1639px;
   height: 750px;
   margin: -100px 0 0 -55px;
-  padding: 50px;
-  padding-top: 160px;
+  padding: 55px;
+  padding-top: 155px;
   /* border-radius: 25%; */
 
   background: #efd9e5;
