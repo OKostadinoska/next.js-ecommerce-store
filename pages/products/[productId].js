@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Button } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import styles from '../../styles/Home.module.css';
 import { getParsedCookie, setParsedCookie } from '../../util/cookies';
@@ -67,13 +68,13 @@ export default function SingleProduct(props) {
                 <div> {props.products.name}</div>
                 <div> {props.products.price} € </div>
               </div>
-              <button
-                data-test-id="product-add-to-cart"
+              <Button
+                basic
+                color="purple"
                 onClick={() => addProductToCart(props.products.id)}
-                className={styles.addToCartButton}
               >
                 Add to Cart
-              </button>
+              </Button>
             </div>
           </div>
         </div>

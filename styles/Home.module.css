@@ -55,7 +55,6 @@
   align-items: center;
   justify-content: center;
   padding-top: 3rem;
-  padding-bottom: 6.3rem;
 }
 
 .card {
@@ -121,8 +120,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 3rem;
-  padding-bottom: 6rem;
+  padding-top: 2rem;
 }
 
 .singleImage {
@@ -208,11 +206,11 @@
 #menuToggle span {
   display: block;
   width: 33px;
-  height: 4px;
+  height: 2px;
   margin-bottom: 5px;
   position: relative;
 
-  background: #b15aa5;
+  background: #131013;
   border-radius: 3px;
 
   z-index: 1;
@@ -264,12 +262,12 @@
   position: absolute;
   width: 1639px;
   height: 750px;
-  margin: -100px 0 0 -135px;
+  margin: -100px 0 0 -55px;
   padding: 50px;
-  padding-top: 120px;
+  padding-top: 160px;
   /* border-radius: 25%; */
 
-  background: #f3d3e5;
+  background: #efd9e5;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -282,7 +280,7 @@
 
 #menu a {
   display: flex;
-  padding: 25px 0;
+  padding: 55px 0;
   font-size: 72px;
   padding-left: 40rem;
   font-weight: 900;
@@ -295,10 +293,80 @@
   transform: none;
 }
 
-.footer {
-  border-top: 1px solid #e3d6e6;
-  text-align: center;
+.menuItem {
+  position: relative;
+  padding: 1.6vw 0 0 0;
+  margin: 4px;
+}
+
+.menuItemImageLeft {
+  pointer-events: none;
   position: absolute;
-  bottom: 0%;
+  height: 50vh;
+  max-height: 400px;
+  opacity: 0;
+  left: 35%;
+  top: 40%;
+  -webkit-transform: translate3d(calc(-100% - 6vw), -30%, 0)
+    translate3d(0, 20px, 0);
+  transform: translate3d(calc(-100% - 6vw), -30%, 0) translate3d(0, 20px, 0);
+}
+
+.menuItemImageRight {
+  pointer-events: none;
+  position: absolute;
+  height: 50vh;
+  max-height: 400px;
+  opacity: 0;
+  left: 90%;
+  top: 35%;
+  -webkit-transform: translate3d(calc(-100% - 6vw), -30%, 0)
+    translate3d(0, 20px, 0);
+  transform: translate3d(calc(-100% - 6vw), -30%, 0) translate3d(0, 20px, 0);
+}
+
+.menuItemLink:hover + .menuItemImageLeft {
+  opacity: 1;
+  -webkit-transform: translate3d(calc(-100% - 6vw), -30%, 0)
+    rotate3d(0, 0, 1, 4deg);
+  transform: translate3d(calc(-100% - 6vw), -30%, 0) rotate3d(0, 0, 1, 4deg);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.menuItemLink:hover + .menuItemImageRight {
+  opacity: 1;
+  -webkit-transform: translate3d(calc(-100% - 6vw), -30%, 0)
+    rotate3d(0, 0, 1, 4deg);
+  transform: translate3d(calc(-100% - 6vw), -30%, 0) rotate3d(0, 0, 1, 4deg);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #fff;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+/* Footer */
+
+.fixedFooter {
+  align-items: center;
+  background-color: #e4a5cb;
+  bottom: 0;
+  margin-top: 19.8rem;
+  color: #666666;
+  display: flex;
+  font-size: 1em;
+  height: 50px;
+  justify-content: center;
+  position: fixed;
+  text-transform: uppercase;
   width: 100%;
+  z-index: 1;
 }

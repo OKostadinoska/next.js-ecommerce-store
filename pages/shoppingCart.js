@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Button } from 'semantic-ui-react';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 import { getParsedCookie, setParsedCookie } from '../util/cookies';
@@ -47,12 +48,13 @@ export default function ShoppingCart() {
                 </Link>{' '}
               </div>
               <div className={styles.deleteButton}>
-                <button
+                <Button
+                  basic
+                  color="purple"
                   onClick={() => deleteFromCart(product.id)}
-                  className={styles.addToCartButton}
                 >
                   Delete
-                </button>
+                </Button>
               </div>
             </div>
           ))}

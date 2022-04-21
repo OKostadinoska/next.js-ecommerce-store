@@ -10,15 +10,36 @@ export default function Header() {
         <span />
         <span />
         <ul id={styles.menu}>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/productList">
-            <a>Products</a>
-          </Link>
-          <Link href="/about">
-            <a>Our Story</a>
-          </Link>
+          <div className={styles.menuItem}>
+            <Link href="/">
+              <a className={styles.menuItemLink}>Home</a>
+            </Link>
+            <img
+              className={styles.menuItemImageRight}
+              src="images/5.png"
+              alt=""
+            />
+          </div>
+          <div>
+            <Link href="/productList">
+              <a className={styles.menuItemLink}>Products</a>
+            </Link>
+            <img
+              className={styles.menuItemImageLeft}
+              src="images/5.png"
+              alt=""
+            />
+          </div>
+          <div className={styles.menuItem}>
+            <Link href="/about">
+              <a className={styles.menuItemLink}>Our Story</a>
+            </Link>
+            <img
+              className={styles.menuItemImageRight}
+              src="images/5.png"
+              alt=""
+            />
+          </div>
         </ul>
       </div>
       <div className={styles.shoppingCart}>

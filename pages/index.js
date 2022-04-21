@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { Button } from 'semantic-ui-react';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 
@@ -20,7 +21,9 @@ export default function About() {
             Mockingbird is the right place to be.{' '}
           </p>
           <Link href="/productList" passHref>
-            <button className={styles.shopButton}>Discover 🎵</button>
+            <Button basic color="purple">
+              Discover 🎵
+            </Button>
           </Link>
         </div>
       </div>
