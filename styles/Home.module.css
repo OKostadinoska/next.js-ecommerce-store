@@ -119,6 +119,14 @@
   text-decoration: #131013;
 }
 
+.shoppingCart a {
+  color: #131013;
+}
+
+.shoppingCartButton {
+  width: 10rem;
+}
+
 .singleProduct {
   display: flex;
   align-items: center;

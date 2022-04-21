@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Button, Divider, Icon } from 'semantic-ui-react';
 import styles from '../styles/Home.module.css';
 
 export default function Header() {
@@ -43,8 +44,19 @@ export default function Header() {
         </ul>
       </div>
       <div className={styles.shoppingCart}>
-        <Link href="/shoppingCart">
-          <a>Shopping Cart 🛒</a>
+        <Link href="/shoppingCart" passHref>
+          <Button
+            basic
+            color="purple"
+            animated="vertical"
+            className={styles.shoppingCartButton}
+          >
+            <Button.Content hidden>
+              <Icon name="shop" />
+            </Button.Content>
+            <Button.Content visible>Shopping Cart</Button.Content>
+          </Button>
+          {/* <a>Shopping Cart 🛒</a> */}
         </Link>
       </div>
     </nav>
