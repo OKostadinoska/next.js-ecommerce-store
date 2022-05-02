@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import Layout from '../components/Layout';
@@ -8,18 +9,40 @@ import styles from '../styles/Home.module.css';
 import { getParsedCookie, setParsedCookie } from '../util/cookies';
 import { getProducts } from '../util/database';
 
-export default function ShoppingCart() {
+type Product = {
+  id: number;
+  type: string;
+  price: number;
+};
+
+type addedProducts = {
+  id: number;
+  amount: number;
+  name: string;
+};
+
+type Props = {
+  products: Product[];
+};
+
+export default function ShoppingCart(props: Props) {
   const cookieValue = getParsedCookie('addedProducts') || [];
   const [cart, setCart] = useState(cookieValue);
+  const router = useRouter();
+
+  // calculate total price
+  const productPrice = props.products.map((product) => product.price / 100);
 
   // delete item from cart
-  const deleteFromCart = (id) => {
-    const newCookie = cart.filter((cookieObject) => {
+  const deleteFromCart = (id: number) => {
+    const newCookie = cart.filter((cookieObject: addedProducts) => {
       return cookieObject.id !== id;
     });
 
     setCart(newCookie);
     setParsedCookie('addedProducts', newCookie);
+
+    router.push(`/productList`);
   };
 
   return (
@@ -31,7 +54,7 @@ export default function ShoppingCart() {
         </Head>
 
         <main className={styles.grid}>
-          {cookieValue.map((product) => (
+          {cookieValue.map((product: addedProducts) => (
             <div key={product.id}>
               <div className={styles.grid}>
                 {/* Dynamic link, eg. /products/1, /products/2, etc */}
