@@ -1,8 +1,17 @@
+import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { Button, Icon } from 'semantic-ui-react';
 import styles from '../styles/Home.module.css';
+import { getParsedCookie } from '../util/cookies';
+
+type CartItems = {
+  id: number;
+  price: number;
+  amount: number;
+};
 
 export default function Header() {
+  const cartItems = getParsedCookie('addedProducts') || [];
   return (
     <nav>
       <div id={styles.menuToggle}>
@@ -54,7 +63,10 @@ export default function Header() {
             <Button.Content hidden>
               <Icon name="shop" />
             </Button.Content>
-            <Button.Content visible>Shopping Cart</Button.Content>
+            <Button.Content visible>
+              Shopping Cart{' '}
+              {cartItems.reduce((a: number, c: CartItems) => a + c.amount, 0)}
+            </Button.Content>
           </Button>
           {/* <a>Shopping Cart 🛒</a> */}
         </Link>

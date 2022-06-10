@@ -1,9 +1,15 @@
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from '@mui/material';
 import { GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { Button } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import styles from '../../styles/Home.module.css';
 import { getParsedCookie, setParsedCookie } from '../../util/cookies';
@@ -27,8 +33,8 @@ type CookieObject = {
 export default function SinglePRoduct(props: Props) {
   const [amount, setAmount] = useState(1);
   // 1. get the value of the cookie
-  const cookieValue = getParsedCookie('addedProducts') || [];
-  const [cart, setCart] = useState(cookieValue);
+  const cartItems = getParsedCookie('addedProducts') || [];
+  const [cart, setCart] = useState(cartItems);
 
   const router = useRouter();
 
@@ -75,7 +81,7 @@ export default function SinglePRoduct(props: Props) {
       // add new cookie
     } else {
       newCookie = [
-        ...cookieValue,
+        ...cartItems,
         { id: id, amount: amount, name: props.product.name },
       ];
     }
@@ -97,7 +103,7 @@ export default function SinglePRoduct(props: Props) {
             <meta name="description" content={props.product.name} />
           </Head>
 
-          <div className={styles.singleProduct}>
+          <Card sx={{ maxWidth: 345 }}>
             <div className={styles.singleImage}>
               <Image
                 src={`/images/${props.product.id}.png`}
@@ -105,26 +111,24 @@ export default function SinglePRoduct(props: Props) {
                 height="300"
               />
             </div>
-            <div className={styles.singleProduct}>
-              <div className={styles.singleImage}>
-                {/* <div>id: {props.product.id}</div> */}
-                <div> {props.product.name}</div>
-                <div> {props.product.price} € </div>
-              </div>
-              <div>
-                <button onClick={() => handleDecrementAmount()}>-</button>
+            <CardContent>
+              {/* <div>id: {props.product.id}</div> */}
+              <Typography> {props.product.name}</Typography>
+              <Typography> {props.product.price / 100} € </Typography>
+
+              <CardActions>
+                <Button onClick={() => handleDecrementAmount()}>-</Button>
                 <span>{amount}</span>
-                <button onClick={() => handleIncrementAmount()}>+</button>
+                <Button onClick={() => handleIncrementAmount()}>+</Button>
                 <Button
-                  basic
-                  color="purple"
+                  color="secondary"
                   onClick={() => addProductToCart(props.product.id)}
                 >
                   Add to Cart
                 </Button>
-              </div>
-            </div>
-          </div>
+              </CardActions>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </Layout>
@@ -138,18 +142,24 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // This is the variable that we get from the URL
   // (anything after the slash)
   const productId = context.query.productId;
-  console.log('db', productId);
-  const product = await getProductById(productId);
+
+  console.log('adventureId', productId);
+  console.log('typeOf adventureId', typeof productId);
 
   const addedProductsOnCookies = context.req.cookies.addedProducts || '[]';
 
   // if there is no addedProduct cookie on the browser we store to an [] otherwise we get the cooke value and parse it
   const addedProducts = JSON.parse(addedProductsOnCookies);
 
+  let product;
+  typeof productId === 'string'
+    ? (product = await getProductById(parseInt(productId)))
+    : (product = undefined);
+
   return {
     props: {
-      addedProducts: addedProducts || null,
-      product,
+      product: product,
+      addedProducts: addedProducts,
     },
   };
 }

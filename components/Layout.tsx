@@ -2,7 +2,10 @@ import Head from 'next/head';
 import Footer from './Footer';
 import Header from './Header';
 
-export default function Layout(props) {
+type Props = {
+  children: object;
+};
+export default function Layout(props: Props) {
   return (
     <>
       <Head>

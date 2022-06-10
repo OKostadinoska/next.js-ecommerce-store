@@ -5,7 +5,17 @@ import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 import { getProducts } from '../util/database';
 
-export default function ProductList(props) {
+type Product = {
+  id: number;
+  name: string;
+  amount: number;
+  price: number;
+};
+
+type Props = {
+  products: Product[];
+};
+export default function ProductList(props: Props) {
   return (
     <Layout>
       <div className={styles.container}>
@@ -15,14 +25,14 @@ export default function ProductList(props) {
         </Head>
 
         <main className={styles.grid}>
-          {props.products.map((product) => {
+          {props.products.map((product: Product) => {
             return (
               <div key={`product-${product.id}`}>
                 <div className={styles.grid}>
                   {/* Dynamic link, eg. /products/1, /products/2, etc */}
                   <Link href={`/products/${product.id}`}>
                     <a className={styles.card}>
-                      {/* {product.name} */}
+                      {product.name}
                       <Image
                         src={`/images/${product.id}.png`}
                         width="200"
@@ -31,6 +41,7 @@ export default function ProductList(props) {
                     </a>
                   </Link>{' '}
                 </div>
+                <span>{product.price / 100} €</span>
               </div>
             );
           })}
@@ -70,7 +81,7 @@ export async function getServerSideProps() {
       // In the props object, you can pass back
       // whatever information you want
 
-      products,
+      products: products,
     },
   };
 }

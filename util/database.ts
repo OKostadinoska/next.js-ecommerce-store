@@ -47,13 +47,13 @@ const sql = connectOneTimeToDatabase();
 export type Product = {
   id: number;
   name: string;
-  price: number;
+  price: string;
   type: string;
 };
 
 export async function getProducts() {
-  const products = await sql`
-    SELECT * FROM products;
+  const products = await sql<[Product[]]>`
+  SELECT * FROM products;
   `;
   return products.map((product) => camelcaseKeys(product));
 }
